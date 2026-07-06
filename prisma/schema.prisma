@@ -1,0 +1,99 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id             String     @id @default(cuid())
+  name           String?
+  email          String     @unique
+  hashedPassword String
+  image          String?
+  createdAt      DateTime   @default(now())
+}
+
+model Client {
+  id        String     @id @default(cuid())
+  name      String
+  email     String?
+  phone     String?
+  company   String?
+  notes     String?
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+  projects  Project[]
+  contracts Contract[]
+}
+
+model Project {
+  id          String     @id @default(cuid())
+  name        String
+  description String?
+  status      String     @default("ACTIVE") // ACTIVE | COMPLETED | PAUSED | CANCELLED
+  budget      Float?
+  currency    String     @default("USD")
+  deadline    DateTime?
+  clientId    String
+  client      Client     @relation(fields: [clientId], references: [id], onDelete: Cascade)
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+  tasks       Task[]
+  contracts   Contract[]
+}
+
+model Task {
+  id          String    @id @default(cuid())
+  title       String
+  description String?
+  dueDate     DateTime?
+  completed   Boolean   @default(false)
+  projectId   String
+  project     Project   @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  createdAt   DateTime  @default(now())
+}
+
+model ContractTemplate {
+  id          String     @id @default(cuid())
+  name        String
+  description String?
+  content     String     // Markdown/text del contrato base
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+  contracts   Contract[]
+}
+
+model Contract {
+  id         String            @id @default(cuid())
+  name       String
+  clientId   String
+  client     Client            @relation(fields: [clientId], references: [id], onDelete: Cascade)
+  projectId  String
+  project    Project           @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  templateId String?
+  template   ContractTemplate? @relation(fields: [templateId], references: [id], onDelete: SetNull)
+  content    String            // Texto generado del contrato en markdown
+  value      Float?
+  currency   String            @default("USD")
+  status     String            @default("DRAFT") // DRAFT | SIGNED | COMPLETED | CANCELLED
+  signedAt   DateTime?
+  fileUrl    String?
+  createdAt  DateTime          @default(now())
+  updatedAt  DateTime          @updatedAt
+  payments   Payment[]
+}
+
+model Payment {
+  id         String   @id @default(cuid())
+  contractId String
+  contract   Contract @relation(fields: [contractId], references: [id], onDelete: Cascade)
+  amount     Float
+  currency   String   @default("USD")
+  status     String   @default("PENDING") // PENDING | PAID | OVERDUE | CANCELLED
+  dueDate    DateTime
+  paidAt     DateTime?
+  notes      String?
+  createdAt  DateTime @default(now())
+}
