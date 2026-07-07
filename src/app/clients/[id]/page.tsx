@@ -39,7 +39,7 @@ const statusBadge = (status: string) => {
     ACTIVE: "bg-green-500/20 text-green-400",
     PAUSED: "bg-orange-500/20 text-orange-400",
   };
-  return map[status] ?? "bg-slate-500/20 text-slate-400";
+  return map[status] ?? "bg-surface text-muted";
 };
 
 const statusLabel = (status: string) => {
@@ -273,20 +273,20 @@ export default async function ClientDetailPage({ params }: Props) {
       </Card>
 
       {/* Contracts */}
-      <Card className="bg-slate-900 border-slate-800">
+      <Card className="bg-card border-border">
         <CardHeader className="flex flex-row items-center justify-between">
-          <CardTitle className="text-sm font-medium text-white flex items-center gap-2">
+          <CardTitle className="text-sm font-medium text-foreground flex items-center gap-2">
             <FileSignature size={16} />
             Contratos ({contracts.length})
           </CardTitle>
         </CardHeader>
         <CardContent>
           {contracts.length === 0 ? (
-            <p className="text-sm text-slate-500 py-4 text-center">
+            <p className="text-sm text-muted py-4 text-center">
               No hay contratos asociados a este cliente
             </p>
           ) : (
-            <div className="divide-y divide-slate-800">
+            <div className="divide-y divide-border">
               {contracts.map(
                 (contract: {
                   id: string;
@@ -298,18 +298,18 @@ export default async function ClientDetailPage({ params }: Props) {
                   <Link
                     key={contract.id}
                     href={`/contracts/${contract.id}`}
-                    className="flex items-center justify-between py-3 hover:bg-slate-800/50 -mx-4 px-4 rounded-lg transition-colors"
+                    className="flex items-center justify-between py-3 hover:bg-surface/50 -mx-4 px-4 rounded-lg transition-colors"
                   >
                     <div className="flex items-center gap-3">
                       <div className="w-8 h-8 rounded-lg bg-orange-500/10 flex items-center justify-center">
                         <FileSignature size={14} className="text-orange-400" />
                       </div>
                       <div>
-                        <p className="text-sm font-medium text-white">
+                        <p className="text-sm font-medium text-foreground">
                           {contract.name}
                         </p>
                         {contract.project && (
-                          <p className="text-xs text-slate-500">
+                          <p className="text-xs text-muted">
                             {contract.project.name}
                             {contract.value && (
                               <>
@@ -320,7 +320,7 @@ export default async function ClientDetailPage({ params }: Props) {
                           </p>
                         )}
                         {!contract.project && contract.value && (
-                          <p className="text-xs text-slate-500">
+                          <p className="text-xs text-muted">
                             ${contract.value.toLocaleString("es-AR")}
                           </p>
                         )}
@@ -332,7 +332,7 @@ export default async function ClientDetailPage({ params }: Props) {
                       >
                         {statusLabel(contract.status)}
                       </Badge>
-                      <ChevronRight size={14} className="text-slate-600" />
+                      <ChevronRight size={14} className="text-muted" />
                     </div>
                   </Link>
                 )
@@ -343,8 +343,8 @@ export default async function ClientDetailPage({ params }: Props) {
       </Card>
 
       {/* Metadata & Delete */}
-      <div className="flex items-center justify-between pt-4 border-t border-slate-800">
-        <div className="text-xs text-slate-600 space-y-0.5">
+      <div className="flex items-center justify-between pt-4 border-t border-border">
+        <div className="text-xs text-muted space-y-0.5">
           <p>
             Creado:{" "}
             {format(new Date(client.createdAt), "dd MMM yyyy HH:mm", {
