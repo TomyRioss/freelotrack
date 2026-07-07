@@ -5,6 +5,7 @@ import { ArrowLeft, FileSignature, DollarSign } from "lucide-react";
 import { format } from "date-fns";
 import { es } from "date-fns/locale";
 import { updateContractStatus, deleteContract } from "@/lib/actions/contract";
+import type { Payment } from "@prisma/client";
 
 const statusColors: Record<string, string> = {
   DRAFT: "bg-yellow-500/20 text-yellow-400 border-yellow-500/30",
@@ -108,7 +109,7 @@ export default async function ContractDetailPage({
         <div className="p-4 rounded-lg bg-card border border-border">
           <h2 className="text-sm font-semibold text-foreground mb-3 uppercase tracking-wider">Pagos ({contract.payments.length})</h2>
           <div className="space-y-2">
-            {contract.payments.map((p) => (
+            {contract.payments.map((p: Payment) => (
               <div key={p.id} className="flex items-center justify-between py-2 px-3 rounded-lg bg-surface/50">
                 <div>
                   <p className="text-sm text-foreground font-medium">${p.amount.toLocaleString("es-AR")}</p>
