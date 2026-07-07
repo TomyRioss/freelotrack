@@ -34,74 +34,74 @@ export default function NewClientPage() {
     <div className="space-y-6">
       <div className="flex items-center gap-4">
         <Link href="/clients">
-          <Button variant="ghost" size="icon" className="text-slate-400 hover:text-white">
+          <Button variant="ghost" size="icon" className="text-muted hover:text-foreground">
             <ArrowLeft size={20} />
           </Button>
         </Link>
-        <h1 className="text-2xl font-bold text-white">Nuevo Cliente</h1>
+        <h1 className="text-2xl font-bold text-foreground">Nuevo Cliente</h1>
       </div>
 
-      <Card className="bg-slate-900 border-slate-800 max-w-2xl">
+      <Card className="bg-card border-border max-w-2xl">
         <CardHeader>
-          <CardTitle className="text-white">Información del Cliente</CardTitle>
+          <CardTitle className="text-foreground">Información del Cliente</CardTitle>
         </CardHeader>
         <CardContent>
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <label className="block text-sm font-medium text-slate-300 mb-2">
+              <label className="block text-sm font-medium text-muted mb-2">
                 Nombre *
               </label>
               <Input
                 name="name"
                 placeholder="John Doe"
                 required
-                className="bg-slate-800 border-slate-700 text-white"
+                className="bg-background border-border text-foreground"
               />
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-slate-300 mb-2">
+              <label className="block text-sm font-medium text-muted mb-2">
                 Email
               </label>
               <Input
                 name="email"
                 type="email"
                 placeholder="john@example.com"
-                className="bg-slate-800 border-slate-700 text-white"
+                className="bg-background border-border text-foreground"
               />
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-slate-300 mb-2">
+              <label className="block text-sm font-medium text-muted mb-2">
                 Teléfono
               </label>
               <Input
                 name="phone"
                 placeholder="+1 (555) 000-0000"
-                className="bg-slate-800 border-slate-700 text-white"
+                className="bg-background border-border text-foreground"
               />
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-slate-300 mb-2">
+              <label className="block text-sm font-medium text-muted mb-2">
                 Empresa
               </label>
               <Input
                 name="company"
                 placeholder="Acme Corp"
-                className="bg-slate-800 border-slate-700 text-white"
+                className="bg-background border-border text-foreground"
               />
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-slate-300 mb-2">
+              <label className="block text-sm font-medium text-muted mb-2">
                 Notas
               </label>
               <Textarea
                 name="notes"
                 placeholder="Notas sobre el cliente..."
                 rows={4}
-                className="bg-slate-800 border-slate-700 text-white"
+                className="bg-background border-border text-foreground"
               />
             </div>
 
@@ -114,7 +114,7 @@ export default function NewClientPage() {
                 {loading ? "Creando..." : "Crear Cliente"}
               </Button>
               <Link href="/clients">
-                <Button type="button" variant="outline" className="border-slate-700">
+                <Button type="button" variant="outline" className="border-border">
                   Cancelar
                 </Button>
               </Link>

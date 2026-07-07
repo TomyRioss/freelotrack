@@ -29,7 +29,7 @@ export function DashboardClient({
       COMPLETED: "bg-green-500/20 text-green-400",
       CANCELLED: "bg-red-500/20 text-red-400",
     };
-    return map[status] ?? "bg-slate-500/20 text-slate-400";
+    return map[status] ?? "bg-muted/20 text-muted";
   };
 
   return (

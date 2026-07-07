@@ -89,15 +89,15 @@ export default async function ClientDetailPage({ params }: Props) {
             <Button
               variant="ghost"
               size="icon"
-              className="text-slate-400 hover:text-white"
+              className="text-muted hover:text-foreground"
             >
               <ArrowLeft size={20} />
             </Button>
           </Link>
           <div>
-            <h1 className="text-2xl font-bold text-white">{client.name}</h1>
+            <h1 className="text-2xl font-bold text-foreground">{client.name}</h1>
             {client.company && (
-              <p className="text-sm text-slate-400">{client.company}</p>
+              <p className="text-sm text-muted">{client.company}</p>
             )}
           </div>
         </div>
@@ -112,16 +112,16 @@ export default async function ClientDetailPage({ params }: Props) {
       </div>
 
       {/* Contact Info */}
-      <Card className="bg-slate-900 border-slate-800">
+      <Card className="bg-card border-border">
         <CardHeader className="pb-3">
-          <CardTitle className="text-sm text-slate-400">
+          <CardTitle className="text-sm text-muted">
             Información de Contacto
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-3">
           {client.email && (
             <div className="flex items-center gap-3">
-              <Mail size={16} className="text-slate-500 shrink-0" />
+              <Mail size={16} className="text-muted shrink-0" />
               <a
                 href={`mailto:${client.email}`}
                 className="text-blue-400 hover:underline text-sm"
@@ -132,7 +132,7 @@ export default async function ClientDetailPage({ params }: Props) {
           )}
           {client.phone && (
             <div className="flex items-center gap-3">
-              <Phone size={16} className="text-slate-500 shrink-0" />
+              <Phone size={16} className="text-muted shrink-0" />
               <a
                 href={`tel:${client.phone}`}
                 className="text-blue-400 hover:underline text-sm"
@@ -143,12 +143,12 @@ export default async function ClientDetailPage({ params }: Props) {
           )}
           {client.company && (
             <div className="flex items-center gap-3">
-              <Building2 size={16} className="text-slate-500 shrink-0" />
-              <span className="text-slate-300 text-sm">{client.company}</span>
+              <Building2 size={16} className="text-muted shrink-0" />
+              <span className="text-foreground text-sm">{client.company}</span>
             </div>
           )}
           {!client.email && !client.phone && !client.company && (
-            <p className="text-sm text-slate-600">
+            <p className="text-sm text-muted/70">
               No se ha registrado información de contacto adicional
             </p>
           )}
@@ -157,12 +157,12 @@ export default async function ClientDetailPage({ params }: Props) {
 
       {/* Notes */}
       {client.notes && (
-        <Card className="bg-slate-900 border-slate-800">
+        <Card className="bg-card border-border">
           <CardHeader className="pb-3">
-            <CardTitle className="text-sm text-slate-400">Notas</CardTitle>
+            <CardTitle className="text-sm text-muted">Notas</CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="text-slate-300 text-sm whitespace-pre-wrap">
+            <p className="text-foreground text-sm whitespace-pre-wrap">
               {client.notes}
             </p>
           </CardContent>
@@ -171,63 +171,63 @@ export default async function ClientDetailPage({ params }: Props) {
 
       {/* Metrics */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <Card className="bg-slate-900 border-slate-800">
+        <Card className="bg-card border-border">
           <CardHeader className="flex flex-row items-center justify-between pb-2">
-            <CardTitle className="text-sm font-medium text-slate-400">
+            <CardTitle className="text-sm font-medium text-muted">
               Total Facturado
             </CardTitle>
             <DollarSign size={16} className="text-green-400" />
           </CardHeader>
           <CardContent>
-            <p className="text-2xl font-bold text-white">
+            <p className="text-2xl font-bold text-foreground">
               ${totalBilled.toLocaleString("es-AR")}
             </p>
           </CardContent>
         </Card>
-        <Card className="bg-slate-900 border-slate-800">
+        <Card className="bg-card border-border">
           <CardHeader className="flex flex-row items-center justify-between pb-2">
-            <CardTitle className="text-sm font-medium text-slate-400">
+            <CardTitle className="text-sm font-medium text-muted">
               Proyectos Completados
             </CardTitle>
             <CheckCircle2 size={16} className="text-blue-400" />
           </CardHeader>
           <CardContent>
-            <p className="text-2xl font-bold text-white">
+            <p className="text-2xl font-bold text-foreground">
               {completedProjects}
-              <span className="text-sm text-slate-500 font-normal ml-1">
+              <span className="text-sm text-muted/70 font-normal ml-1">
                 / {projects.length}
               </span>
             </p>
           </CardContent>
         </Card>
-        <Card className="bg-slate-900 border-slate-800">
+        <Card className="bg-card border-border">
           <CardHeader className="flex flex-row items-center justify-between pb-2">
-            <CardTitle className="text-sm font-medium text-slate-400">
+            <CardTitle className="text-sm font-medium text-muted">
               Contratos Activos
             </CardTitle>
             <FileSignature size={16} className="text-orange-400" />
           </CardHeader>
           <CardContent>
-            <p className="text-2xl font-bold text-white">{activeContracts}</p>
+            <p className="text-2xl font-bold text-foreground">{activeContracts}</p>
           </CardContent>
         </Card>
       </div>
 
       {/* Projects */}
-      <Card className="bg-slate-900 border-slate-800">
+      <Card className="bg-card border-border">
         <CardHeader className="flex flex-row items-center justify-between">
-          <CardTitle className="text-sm font-medium text-white flex items-center gap-2">
+          <CardTitle className="text-sm font-medium text-foreground flex items-center gap-2">
             <FolderKanban size={16} />
             Proyectos ({projects.length})
           </CardTitle>
         </CardHeader>
         <CardContent>
           {projects.length === 0 ? (
-            <p className="text-sm text-slate-500 py-4 text-center">
+            <p className="text-sm text-muted py-4 text-center">
               No hay proyectos asociados a este cliente
             </p>
           ) : (
-            <div className="divide-y divide-slate-800">
+            <div className="divide-y divide-border">
               {projects.map(
                 (project: {
                   id: string;
@@ -239,17 +239,17 @@ export default async function ClientDetailPage({ params }: Props) {
                   <Link
                     key={project.id}
                     href={`/projects/${project.id}`}
-                    className="flex items-center justify-between py-3 hover:bg-slate-800/50 -mx-4 px-4 rounded-lg transition-colors"
+                    className="flex items-center justify-between py-3 hover:bg-surface/50 -mx-4 px-4 rounded-lg transition-colors"
                   >
                     <div className="flex items-center gap-3">
                       <div className="w-8 h-8 rounded-lg bg-blue-500/10 flex items-center justify-center">
                         <Briefcase size={14} className="text-blue-400" />
                       </div>
                       <div>
-                        <p className="text-sm font-medium text-white">
+                        <p className="text-sm font-medium text-foreground">
                           {project.name}
                         </p>
-                        <p className="text-xs text-slate-500">
+                        <p className="text-xs text-muted">
                           {project.deadline
                             ? `Vence ${format(new Date(project.deadline), "dd MMM yyyy", { locale: es })}`
                             : "Sin fecha límite"}
@@ -262,7 +262,7 @@ export default async function ClientDetailPage({ params }: Props) {
                       >
                         {statusLabel(project.status)}
                       </Badge>
-                      <ChevronRight size={14} className="text-slate-600" />
+                      <ChevronRight size={14} className="text-muted" />
                     </div>
                   </Link>
                 )

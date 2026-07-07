@@ -24,7 +24,7 @@ export function ContractsTable({ contracts }: { contracts: ContractRow[] }) {
       COMPLETED: "bg-green-500/20 text-green-400 border-green-500/30",
       CANCELLED: "bg-red-500/20 text-red-400 border-red-500/30",
     };
-    return map[s] ?? "bg-slate-500/20 text-slate-400 border-slate-500/30";
+    return map[s] ?? "bg-muted/20 text-muted border-muted/30";
   };
 
   const statusLabel: Record<string, string> = {

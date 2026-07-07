@@ -14,8 +14,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="es" className="dark">
-      <body className="bg-slate-950 text-slate-100 antialiased">
+    <html lang="es">
+      <body className="bg-background text-foreground antialiased">
         <SessionProvider>
           <AppShell>{children}</AppShell>
         </SessionProvider>
