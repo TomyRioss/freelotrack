@@ -3,6 +3,8 @@ import Link from "next/link";
 import { Plus, FileSignature } from "lucide-react";
 import { ContractsTable } from "./contracts-table";
 
+export const dynamic = 'force-dynamic';
+
 export default async function ContractsPage() {
   const contracts = await getContracts();
 

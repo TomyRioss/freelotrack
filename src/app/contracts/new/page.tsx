@@ -3,6 +3,8 @@ import { getProjects } from "@/lib/queries/project";
 import { getTemplates } from "@/lib/queries/template";
 import { ContractWizard } from "./contract-wizard";
 
+export const dynamic = 'force-dynamic';
+
 export default async function NewContractPage() {
   const [clients, projects, templates] = await Promise.all([
     getClients(),

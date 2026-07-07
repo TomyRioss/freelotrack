@@ -15,6 +15,8 @@ import { format } from "date-fns";
 import { es } from "date-fns/locale";
 import { Plus, FolderKanban } from "lucide-react";
 
+export const dynamic = 'force-dynamic';
+
 const statusLabels: Record<string, string> = {
   ACTIVE: "Activo",
   COMPLETED: "Completado",

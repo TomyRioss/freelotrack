@@ -9,6 +9,8 @@ import { Textarea } from "@/components/ui/textarea";
 import { ArrowLeft } from "lucide-react";
 import { createClient } from "@/lib/actions/client";
 
+export const dynamic = 'force-dynamic';
+
 export default function NewClientPage() {
   const [loading, setLoading] = useState(false);
 

@@ -3,6 +3,8 @@ import Link from "next/link";
 import { Plus, FileText } from "lucide-react";
 import { TemplatesTable } from "./templates-table";
 
+export const dynamic = 'force-dynamic';
+
 export default async function TemplatesPage() {
   const templates = await getTemplates();
 

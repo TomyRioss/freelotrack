@@ -6,6 +6,8 @@ import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { createTemplate } from "@/lib/actions/template";
 
+export const dynamic = 'force-dynamic';
+
 export default function NewTemplatePage() {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
